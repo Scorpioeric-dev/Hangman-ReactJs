@@ -71,7 +71,7 @@ export default class Hangman extends Component {
     }
     return (
       <div className="Hangman container">
-        <h1 className="text-center">Hangman</h1>
+        <h1><strong>Harry Potter Hangman</strong></h1>
         <div className="float-right">
           Wrong Guesses: {this.state.mistake} of {this.props.maxWrong}
         </div>
@@ -79,10 +79,10 @@ export default class Hangman extends Component {
           <img src={this.props.images[this.state.mistake]} alt="" />
         </div>
         <div className="text-center">
-          <p>Guess the Harry Potter Character:</p>
+          <p><strong>Guess the Harry Potter Character:</strong></p>
           <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
           <p>{gameStat}</p>
-          <button className='btn btn-info' onClick={this.playAgain}>try Again</button>
+          <button className='btn btn-info' onClick={this.playAgain}>Play Again</button>
         </div>
       </div>
     );
