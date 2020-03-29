@@ -20,15 +20,55 @@ export default class Hangman extends Component {
     answer: randomWord()
   };
 
+
+  playAgain = () => {
+    this.setState({
+        mistake:0,
+        guessed:new Set([]),
+        answer:randomWord()
+    })
+}
+
+
   guessedWord() {
     return this.state.answer
       .split("")
       .map(letter => (this.state.guessed.has(letter) ? letter : " _ "));
   }
 
+  handleChange = e => {
+    let letter = e.target.value;
+    this.setState(ele => ({
+      guessed: ele.guessed.add(letter),
+      mistake: ele.mistake + (ele.answer.includes(letter) ? 0 : 1)
+    }));
+  };
+
+  generateButtons() {
+    return "abcdefghijklmnopqrstuvwxyz".split("").map(letter => (
+      <button
+        class="btn btn-lg btn-primary m-2"
+        key={letter}
+        value={letter}
+        onClick={this.handleChange}
+        disabled={this.state.guessed.has(letter)}
+      >
+        {letter}
+      </button>
+    ));
+  }
+
   render() {
     //variable is counting if the max wrong exceed the amount defined if it is game over
     const gameOver = this.state.mistake >= this.props.maxWrong;
+    const isWinner = this.guessedWord().join("") === this.state.answer
+    let gameStat = this.generateButtons();
+
+    if (isWinner){
+        gameStat = "You are a Winner, and clearly know Harry Potter"
+    }else if (gameOver){
+        gameStat = "You Lose!!!"
+    }
     return (
       <div className="Hangman container">
         <h1 className="text-center">Hangman</h1>
@@ -39,8 +79,10 @@ export default class Hangman extends Component {
           <img src={this.props.images[this.state.mistake]} alt="" />
         </div>
         <div className="text-center">
-          <p>Guess the Harry Potter Characters:</p>
-          <p>{!gameOver ? this.guessWord() : this.state.answer}</p>
+          <p>Guess the Harry Potter Character:</p>
+          <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
+          <p>{gameStat}</p>
+          <button className='btn btn-info' onClick={this.playAgain}>try Again</button>
         </div>
       </div>
     );

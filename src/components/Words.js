@@ -1,20 +1,20 @@
 let harryPotter_characters = [
-  "Harry Potter",
-  "Luna Lovegood",
-  "Ginny Weasley",
-  "Remus Lupin",
-  "Hermione Granger",
-  "Albus Dumbledore",
-  "Rubeus Hagrid",
-  "Sirius Black",
-  "Ron Weasley",
-  "Lord Voldemort",
-  "Nymphadora Tonks",
-  "Alastor Moody",
-  "Lily Evans Potter",
-  "Draco Malfoy",
-  "Dobby the House Elf",
-  "Neville Longbottom"
+  "harrypotter",
+  "lunalovegood",
+  "ginnyweasley",
+  "remuslupin",
+  "hermionegranger",
+  "albusdumbledore",
+  "rubeushagrid",
+  "siriusblack",
+  "ronweasley",
+  "lordvoldemort",
+  "nymphadoratonks",
+  "alastormoody",
+  "lilyevanspotter",
+  "dracomalfoy",
+  "dobbythehouseelf",
+  "nevillelongbottom"
 ];
 
 function randomWord() {
